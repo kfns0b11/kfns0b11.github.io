@@ -9,7 +9,14 @@ date: 2021-08-16T13:30:51+08:00
 test post
 ## Heading 2
 
+test picture
+![](https://imgns.oss-cn-beijing.aliyuncs.com/img/20210816155347.gif)
+**图 1 飘动的树叶 gif**
+
 ### Heading 3
+
+测试 Hugo 中的 YouTube Shortcode.
+{{ youtube 2xkNJL4gJ9E&t }}
 
 #### Heading 4
 
