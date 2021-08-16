@@ -16,7 +16,8 @@ test picture
 ### Heading 3
 
 测试 Hugo 中的 YouTube Shortcodes.
-{{< youtube "2xkNJL4gJ9E&t" >}}
+
+{{< youtube "2xkNJL4gJ9E" >}}
 
 
 
