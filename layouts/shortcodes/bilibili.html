@@ -1,11 +1,9 @@
+{{ $videoID := index .Params 0 }}
+{{ $pageNum := index .Params 1 | default 1}}
 
-{{ $videoID := index .Params 0  }}
-{{ $pageNum := index .Params 1 | default 1 }}
-<div style="position: relative; width: 100%; padding-bottom: 70%; padding-top: 5px; height: 0; overflow: hidden;">
-{{ if (findRE "^[bB][vV][0-9a-zA-Z]+$" $videoID)  }}
-  <iframe id="biliplayer" src="//player.bilibili.com/player.html?bvid={{ $videoID  }}&page={{ $pageNum  }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy" > </iframe>
-{{ else  }}
-  <iframe id="biliplayer" src="//player.bilibili.com/player.html?aid={{ $videoID  }}&page={{ $pageNum  }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy" > </iframe>
-  
-{{ end  }}
-</div>
+{{ if (findRE "^[bB][vV][0-9a-zA-Z]+$" $videoID) }}
+<div><iframe id="biliplayer" src="//player.bilibili.com/player.html?bvid={{ $videoID }}&page={{ $pageNum }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy" > </iframe></div>
+{{ else }}
+<div><iframe id="biliplayer" src="//player.bilibili.com/player.html?aid={{ $videoID }}&page={{ $pageNum }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy" > </iframe></div>
+
+{{ end }}
