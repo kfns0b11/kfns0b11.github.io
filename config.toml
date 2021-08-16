@@ -80,7 +80,7 @@ weight = 4
     repo = "kfngp.github.io" # The repo to store comments
     owner = "kfngp" # Your GitHub ID
     admin= "kfngp" # Required. Github repository owner and collaborators. (Users who having write access to this repository)
-    id= location.pathname # The unique id of the page.
+    id= "location.pathname" # The unique id of the page.
     distractionFreeMode= false # Enable hot key (cmd|ctrl + enter) submit c
 
 
