@@ -74,13 +74,7 @@ weight = 4
   [params.comments]
     enabled = true # default
     engine = "gitalk" # more supported engines will be added.
-  [params.comments.gitalk]
-    clientID = "db571745319a8ad19f42" # Your client ID
-    clientSecret = "b8ffe4ccc7364957da3cf3a90765b30173cd36ba" # Your client secret
-    repo = "kfngp.github.io" # The repo to store comments
-    owner = "kfngp" # Your GitHub ID
-    admin= "kfngp" # Required. Github repository owner and collaborators. (Users who having write access to this repository)
-
+  
   # the value of name should be an valid font awesome icon name (brands type)
   # https://fontawesome.com/icons?d=gallery&s=brands
   [[params.social]]
