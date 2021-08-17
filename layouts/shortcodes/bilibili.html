@@ -2,9 +2,9 @@
 {{ $pageNum := index .Params 1 | default 1}}
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   {{ if (findRE "^[bB][vV][0-9a-zA-Z]+$" $videoID) }}
-  <iframe id="biliplayer" src="//player.bilibili.com/player.html?bvid={{ $videoID }}&page={{ $pageNum }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" > </iframe>
+  <iframe id="biliplayer" src="//player.bilibili.com/player.html?bvid={{ $videoID }}&page={{ $pageNum }}&high_quality=1" allowfullscreen="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" > </iframe>
   {{ else }}
-  <iframe id="biliplayer" src="//player.bilibili.com/player.html?aid={{ $videoID }}&page={{ $pageNum }}" sstyle="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" > </iframe>
+  <iframe id="biliplayer" src="//player.bilibili.com/player.html?aid={{ $videoID }}&page={{ $pageNum }}&high_quality=1" allowfullscreen="true" sstyle="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" > </iframe>
 
   {{ end }}
 </div>
