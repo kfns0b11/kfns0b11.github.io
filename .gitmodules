@@ -3,4 +3,4 @@
 	url = https://github.com/mrmierzejewski/hugo-theme-console.git
 [submodule "themes/archie"]
 	path = themes/archie
-	url = https://github.com/athul/archie.git
+	url = https://github.com/kfns0b11/archie.git
