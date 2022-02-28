@@ -11,7 +11,9 @@ test post
 ## Heading 2
 
 test picture
+
 ![](https://imgns.oss-cn-beijing.aliyuncs.com/img/20210816155347.gif)
+
 **图 1 飘动的树叶**
 
 ### Heading 3

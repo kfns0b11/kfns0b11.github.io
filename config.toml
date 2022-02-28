@@ -4,7 +4,7 @@ title = "kfns0b11's blog"
 theme="archie"
 copyright = "© kfn0b11"
 # Code Highlight
-pygmentsstyle = "monokai"
+pygmentsstyle = "github"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
