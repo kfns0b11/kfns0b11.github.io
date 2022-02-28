@@ -11,6 +11,24 @@
        url('../fonts/fira-sans-v10-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/fira-sans-v10-latin-regular.svg#FiraSans') format('svg'); /* Legacy iOS */
 }
+
+@font-face {
+  font-family: 'Merriweather';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Merriweather'), local('Merriweather-Regular'),
+       url('../fonts/merriweather-v13-latin-regular.woff2') format('woff2'),
+       url('../fonts/merriweather-v13-latin-regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'),
+       url('../fonts/lato-v11-latin-regular.woff2') format('woff2'),
+       url('../fonts/lato-v11-latin-regular.woff') format('woff');
+}
+
 /* roboto-mono-regular - latin */
 @font-face {  
   font-family: 'Roboto Mono';
