@@ -11,6 +11,8 @@ html {
   font-family: 'Lato';
 }
 body{
+  font-family: 'Lato';
+  line-height: 1.8;
   display: block;
   margin: 8px;
 }
@@ -26,6 +28,7 @@ body{
 p {
   font-family: 'Merriweather';
   line-height: 1.8;
+  font-size: 16px;
 }
 
 hr {
@@ -116,7 +119,7 @@ pre {
 pre code {
   background-color: transparent;
   color: inherit;
-  font-size: 100%;
+  font-size: 120%;
   padding: 0;
 }
 
@@ -142,7 +145,7 @@ header .main {
   font-size: 1.5rem;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin-top: 2em;
 }
 
@@ -201,7 +204,7 @@ article .title {
 }
 
 .callout p {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'Merriweather';
   margin: 0;
 }
 
@@ -266,48 +269,48 @@ svg{
 .highlight pre code[class=language-javaScript]::before,
 .highlight pre code[class="language-js"]::before {
 content: "js";
-background: #f7df1e;
-color: black;
+background: #ade8f4;
+color: black ;
 }
 .highlight pre code[class*='language-yml']::before,
 .highlight pre code[class*='language-yaml']::before {
 content: 'yaml';
-background: #f71e6a;
-color: white;
+background: #ade8f4;
+color: black ;
 }
 .highlight pre code[class*='language-shell']::before,
 .highlight pre code[class*='language-bash']::before,
 .highlight pre code[class*='language-sh']::before {
 content: 'shell';
-background: green;
-color:white
+background: #ade8f4;
+color: black ;
 }
 .highlight pre code[class*='language-json']::before{
 content: 'json';
-background: dodgerblue;
- color: #000000 
+background: #ade8f4;
+color: black ;
 }
 .highlight pre code[class*='language-python']::before,
 .highlight pre code[class*='language-py']::before {
 content: 'py';
-background: blue;
-color: yellow ;
+background: #ade8f4;
+color: black ;
 }
 .highlight pre code[class*='language-css']::before{
 content: 'css';
-background: cyan;
+background: #ade8f4;
 color: black ;
 }
 .highlight pre code[class*='language-go']::before{
 content: 'Go';
-background: cyan;
-color: royalblue ;
+background: #ade8f4;
+color: black ;
 }
 .highlight pre code[class*='language-md']::before,
 .highlight pre code[class*='language-md']::before{
 content: 'Markdown';
-background: royalblue;
-color: whitesmoke ;
+background: #ade8f4;
+color: black ;
 }
 
 /* table */
