@@ -2,6 +2,7 @@
 title: "Go 语言闭包及其应用"
 slug: "goclosure"
 date: 2021-10-28T23:59:44+08:00
+description: "在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于"
 draft: false
 tags: ["go"]
 ---
