@@ -1,19 +1,20 @@
-baseURL = 'https://kfns0b11.github.io'
+baseURL = 'https://kfns0b11.github.io/'
 languageCode = 'en-us'
-title = "kfns0b11's blog"
-theme="archie"
+title = "kfns0b11's NoteBook"
+theme="hugo-ink"
 copyright = "© kfn0b11"
 # Code Highlight
-pygmentsstyle = "github"
+pygmentsstyle = "borland"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
-paginate=3 # articles per page
+paginate=10 # articles per page
 
 [params]
-	mode="auto" # color-mode → light,dark,toggle or auto
-	useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
-	subtitle = "As long as we are alive, there is no bad end."
+	avatar = "https://avatars.githubusercontent.com/u/88999483?v=4"
+	mode="auto"
+	useCDN=false
+	subtitle = "Learn in public, the fast way to learn."
 	favicon = "https://raw.githubusercontent.com/kfns0b11/kfns0b11.github.io/main/static/images/favicon.ico"
 
 # Social Tags

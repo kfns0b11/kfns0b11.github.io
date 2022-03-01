@@ -2,7 +2,7 @@
 title: "Go 语言闭包及其应用"
 slug: "goclosure"
 date: 2021-10-28T23:59:44+08:00
-description: "在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于"
+description: "在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于：匿名函数没有指定函数名称，一般用法为在原地执行一次或者赋值给一个变量供以后使用。"
 draft: false
 tags: ["go"]
 ---
@@ -14,13 +14,11 @@ func main() {
 	func() {
 		fmt.Println("Anonymous function execute locally!")
 	}()
-
 	// assign to a variable
 	var anonyfunc func() = func() {
 		fmt.Println("Anoymous function assign to a variable anonyfunc")
 	}
 	anonyfunc()
-
 	// change value of anonyfunc
 	anonyfunc = somefunc
 	anonyfunc()
@@ -66,7 +64,7 @@ func main() {
 examples/closure/closure.go:6:2: moved to heap: i
 ```
 使用 `go tool compile -N -l -S examples/closure/closure.go` 查看汇编代码可以看到更详细的实现：
-```armasm
+```assembly
 ...
 MOVD    $type.noalg.struct { F uintptr; "".i *int }(SB), R0
 MOVD    R0, 8(RSP)

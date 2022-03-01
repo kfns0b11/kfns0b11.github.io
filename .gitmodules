@@ -4,3 +4,6 @@
 [submodule "themes/archie"]
 	path = themes/archie
 	url = https://github.com/kfns0b11/archie.git
+[submodule "themes/hugo-ink"]
+	path = themes/hugo-ink
+	url = https://github.com/kfns0b11/hugo-ink.git
