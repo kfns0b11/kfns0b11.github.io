@@ -1,132 +1,95 @@
 <!doctype html><html><head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge"><title>Go 语言闭包及其应用 - kfns0b11's blog</title><link rel=icon type=image/png href=https://raw.githubusercontent.com/kfns0b11/kfns0b11.github.io/main/static/images/favicon.ico><meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=description content="在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于">
+<meta name=description content="在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于：匿名函数没有指定函数名称，一般用法为在原地执行一次或者赋值给一个变量供以后使用。">
 <meta property="og:image" content>
 <meta property="og:title" content="Go 语言闭包及其应用">
-<meta property="og:description" content="在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于">
+<meta property="og:description" content="在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于：匿名函数没有指定函数名称，一般用法为在原地执行一次或者赋值给一个变量供以后使用。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://kfns0b11.github.io/posts/goclosure/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-10-28T23:59:44+08:00">
 <meta property="article:modified_time" content="2021-10-28T23:59:44+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="Go 语言闭包及其应用">
-<meta name=twitter:description content="在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于">
+<meta name=twitter:description content="在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于：匿名函数没有指定函数名称，一般用法为在原地执行一次或者赋值给一个变量供以后使用。">
 <script src=https://kfns0b11.github.iojs/feather.min.js></script>
 <link href=https://kfns0b11.github.io/css/fonts.2a4c38863868fbbc0e59494fe64bb01f991da0e6c874e6bbab472391179a05fe.css rel=stylesheet>
-<link rel=stylesheet type=text/css media=screen href=https://kfns0b11.github.io/css/main.088b517ba5981489d9d831de5c94a6b4bf67e753f09b5d4edea7f761a0be164d.css>
+<link rel=stylesheet type=text/css media=screen href=https://kfns0b11.github.io/css/main.66221541a4f3b6135e30f81e6cd4a7211dcf6cd029ba3c477ed4132079f5f9ee.css>
 <link id=darkModeStyle rel=stylesheet type=text/css href=https://kfns0b11.github.io/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css media="(prefers-color-scheme: dark)">
-</head>
-<body>
+</head><body>
 <div class=content><header>
 <div class=main>
 <a href=https://kfns0b11.github.io>kfns0b11's blog</a>
-</div>
-<nav>
+</div><nav>
 <a href=/>Home</a>
 <a href=/posts>All posts</a>
 <a href=/tags>Tags</a>
 <a href=/about>About</a>
-</nav>
-</header>
-<main>
+</nav></header><main>
 <article>
 <div class=title>
-<h1 class=title>Go 语言闭包及其应用</h1>
-<div class=meta>Posted on Oct 28, 2021</div>
-</div>
-<section class=body>
-<h2 id=匿名函数>匿名函数</h2>
-<p>在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于：<strong>匿名函数没有指定函数名称</strong>，一般用法为在原地执行一次或者赋值给一个变量供以后使用。</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#000;font-weight:700>func</span> <span style=color:#900;font-weight:700>main</span>() {
-	<span style=color:#998;font-style:italic>// execute locally
-</span><span style=color:#998;font-style:italic></span>	<span style=color:#000;font-weight:700>func</span>() {
-		fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#d14>&#34;Anonymous function execute locally!&#34;</span>)
-	}()
-
-	<span style=color:#998;font-style:italic>// assign to a variable
-</span><span style=color:#998;font-style:italic></span>	<span style=color:#000;font-weight:700>var</span> anonyfunc <span style=color:#000;font-weight:700>func</span>() = <span style=color:#000;font-weight:700>func</span>() {
-		fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#d14>&#34;Anoymous function assign to a variable anonyfunc&#34;</span>)
-	}
-	<span style=color:#900;font-weight:700>anonyfunc</span>()
-
-	<span style=color:#998;font-style:italic>// change value of anonyfunc
-</span><span style=color:#998;font-style:italic></span>	anonyfunc = somefunc
-	<span style=color:#900;font-weight:700>anonyfunc</span>()
-}
-<span style=color:#000;font-weight:700>func</span> <span style=color:#900;font-weight:700>somefunc</span>() {
-	fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#d14>&#34;some standard func&#34;</span>)
-}
-</code></pre></div><p>这段代码简单展示了匿名函数原地执行和赋值给变量执行的例子，并且在运行期间改变了 <code>anonyfunc</code> 的值。</p>
-<h2 id=go-语言闭包>Go 语言闭包</h2>
-<p>闭包可以看作是一种特殊的匿名函数，该匿名函数<strong>引用了其包裹函数的变量</strong>。
-<a href=https://github.com/kfngp/kfngp.github.io/blob/main/examples/closure/closure.go>closure.go:</a></p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#000;font-weight:700>func</span> <span style=color:#900;font-weight:700>intSeq</span>() <span style=color:#000;font-weight:700>func</span>() <span style=color:#458;font-weight:700>int</span> {
-    i <span style=color:#000;font-weight:700>:=</span> <span style=color:#099>0</span>
-	<span style=color:#998;font-style:italic>// the returned anonymous function references variable i
-</span><span style=color:#998;font-style:italic></span>    <span style=color:#000;font-weight:700>return</span> <span style=color:#000;font-weight:700>func</span>() <span style=color:#458;font-weight:700>int</span> {
-        i<span style=color:#000;font-weight:700>++</span>
-        <span style=color:#000;font-weight:700>return</span> i
-    }
-}
-<span style=color:#000;font-weight:700>func</span> <span style=color:#900;font-weight:700>main</span>() {
-    nextInt <span style=color:#000;font-weight:700>:=</span> <span style=color:#900;font-weight:700>intSeq</span>()
-    fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#900;font-weight:700>nextInt</span>())
-    fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#900;font-weight:700>nextInt</span>())
-    fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#900;font-weight:700>nextInt</span>())	
-	<span style=color:#998;font-style:italic>// call intSeq() generate a new enviroment, i in newINts set to 0
-</span><span style=color:#998;font-style:italic></span>    newInts <span style=color:#000;font-weight:700>:=</span> <span style=color:#900;font-weight:700>intSeq</span>()
-    fmt.<span style=color:#900;font-weight:700>Println</span>(<span style=color:#900;font-weight:700>newInts</span>())
-}
-</code></pre></div><p><code>intSeq</code> 返回的匿名函数引用其包裹函数 <code>intSeq</code> 的变量 <code>i</code>，程序的最终执行结果为：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback>1
-2
-3
-1
-</code></pre></div><p>注意在没有给匿名函数传递参数的情况下，匿名函数却引用到了包裹函数的变量 <code>i</code>，这使其称之为闭包。</p>
-<h3 id=闭包的实现>闭包的实现</h3>
-<p>现在请读者思考一个问题：<code>intSeq()</code> 中的局部变量 <code>i</code> 应该在内存中的什么位置分配？<code>intSeq()</code> 函数的栈上？首先肯定不能在 <code>intSeq</code> 函数的栈上分配，因为函数 <code>intSeq</code> 返回后，对应的函数栈就失效了，此时匿名函数中的变量 <code>i</code> 就引用了一个失效的位置。所以闭包环境中引用的变量不能在栈上分配。实际上 Go 语言会进行逃逸分析，将闭包环境中的变量<strong>分配至堆上</strong>。使用 <code>go build --gcflags=-m examples/closure/closure.go</code> 查看输出，可以看到如下一行输出信息：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>examples/closure/closure.go:6:2: moved to heap: i
-</code></pre></div><p>使用 <code>go tool compile -N -l -S examples/closure/closure.go</code> 查看汇编代码可以看到更详细的实现：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-armasm data-lang=armasm><span style=color:#a61717;background-color:#e3d2d2>...</span>
-MOVD    <span style=color:#a61717;background-color:#e3d2d2>$type.noalg.struct</span> <span style=color:#a61717;background-color:#e3d2d2>{</span> <span style=color:#a61717;background-color:#e3d2d2>F</span> <span style=color:#a61717;background-color:#e3d2d2>uintptr</span><span style=color:#998;font-style:italic>; &#34;&#34;.i *int }(SB), R0
-</span><span style=color:#998;font-style:italic></span>MOVD    <span style=color:#a61717;background-color:#e3d2d2>R0</span>, <span style=color:#a61717;background-color:#e3d2d2>8(RSP)</span>
-PCDATA  <span style=color:#a61717;background-color:#e3d2d2>$1</span>, <span style=color:#a61717;background-color:#e3d2d2>$1</span>
-CALL    <span style=color:#a61717;background-color:#e3d2d2>runtime.newobject(SB)</span>
-<span style=color:#a61717;background-color:#e3d2d2>...</span>
-</code></pre></div><p>可以看到闭包实际上将其函数和其环境中的变量打包成了一个结构体使用 <code>runtime.newobject</code> 将其分配到了堆内存上。因此我们也可以得出一个结论<strong>只要闭包函数对象存在，其引用（捕获）的那些变量就会存在，就不会被回收。</strong></p>
-<h3 id=闭包的应用>闭包的应用</h3>
-<p>闭包在实际实际开发中有很多用处，这里介绍一下在网络开发中使用闭包的例子。在使用 Go 进行 Web 开发时，可以在实际路由处理函数前后集成中间件进行额外的逻辑处理，比如使用 Gin 框架进行服务器开发时，默认会使用 <a href=https://github.com/gin-gonic/gin/blob/1c2aa59b20c8cff5b3c601708afe22100eac25e6/logger.go#L182>Logger</a> 中间件进行日志处理。其实现为：</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=color:#000;font-weight:700>func</span> <span style=color:#900;font-weight:700>Logger</span>() HandlerFunc {
-	<span style=color:#000;font-weight:700>return</span> <span style=color:#900;font-weight:700>LoggerWithConfig</span>(LoggerConfig{})
-}
-<span style=color:#000;font-weight:700>func</span> <span style=color:#900;font-weight:700>LoggerWithFormatter</span>(f LogFormatter) HandlerFunc {
-	<span style=color:#998;font-style:italic>// closure function
-</span><span style=color:#998;font-style:italic></span>	<span style=color:#000;font-weight:700>return</span> <span style=color:#900;font-weight:700>LoggerWithConfig</span>(LoggerConfig{
-		Formatter: f,
-	})
-}
-<span style=color:#000;font-weight:700>type</span> HandlerFunc <span style=color:#000;font-weight:700>func</span>(<span style=color:#000;font-weight:700>*</span>Context)
-</code></pre></div><hr>
-<p><a href=https://www.calhoun.io/5-useful-ways-to-use-closures-in-go/>5 Useful Ways to Use Closures in Go</a></p>
-<p><a href=https://www.calhoun.io/what-is-a-closure/>What is a Closure?</a></p>
-<p><a href=https://tonybai.com/2021/08/09/when-variables-captured-by-closures-are-recycled-in-go/>Go中被闭包捕获的变量何时会被回收</a></p>
-</section>
-<div class=post-tags>
+<h1 class=title>Go 语言闭包及其应用</h1><div class=meta>Posted on Oct 28, 2021</div></div><section class=body>
+<h2 id=匿名函数>匿名函数</h2><p>在学习 Go 语言闭包之前，需要先对匿名函数有所了解。匿名函数与常规函数的不同点在于：<strong>匿名函数没有指定函数名称</strong>，一般用法为在原地执行一次或者赋值给一个变量供以后使用。</p><div class=highlight><pre tabindex=0 style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#069;font-weight:700>func</span> <span style=color:#c0f>main</span>() {
+</span></span><span style=display:flex><span>	<span style=color:#09f;font-style:italic>// execute locally
+</span></span></span><span style=display:flex><span><span style=color:#09f;font-style:italic></span>	<span style=color:#069;font-weight:700>func</span>() {
+</span></span><span style=display:flex><span>		fmt.<span style=color:#c0f>Println</span>(<span style=color:#c30>&#34;Anonymous function execute locally!&#34;</span>)
+</span></span><span style=display:flex><span>	}()
+</span></span><span style=display:flex><span>	<span style=color:#09f;font-style:italic>// assign to a variable
+</span></span></span><span style=display:flex><span><span style=color:#09f;font-style:italic></span>	<span style=color:#069;font-weight:700>var</span> anonyfunc <span style=color:#069;font-weight:700>func</span>() = <span style=color:#069;font-weight:700>func</span>() {
+</span></span><span style=display:flex><span>		fmt.<span style=color:#c0f>Println</span>(<span style=color:#c30>&#34;Anoymous function assign to a variable anonyfunc&#34;</span>)
+</span></span><span style=display:flex><span>	}
+</span></span><span style=display:flex><span>	<span style=color:#c0f>anonyfunc</span>()
+</span></span><span style=display:flex><span>	<span style=color:#09f;font-style:italic>// change value of anonyfunc
+</span></span></span><span style=display:flex><span><span style=color:#09f;font-style:italic></span>	anonyfunc = somefunc
+</span></span><span style=display:flex><span>	<span style=color:#c0f>anonyfunc</span>()
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#069;font-weight:700>func</span> <span style=color:#c0f>somefunc</span>() {
+</span></span><span style=display:flex><span>	fmt.<span style=color:#c0f>Println</span>(<span style=color:#c30>&#34;some standard func&#34;</span>)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>这段代码简单展示了匿名函数原地执行和赋值给变量执行的例子，并且在运行期间改变了 <code>anonyfunc</code> 的值。</p><h2 id=go-语言闭包>Go 语言闭包</h2><p>闭包可以看作是一种特殊的匿名函数，该匿名函数<strong>引用了其包裹函数的变量</strong>。
+<a href=https://github.com/kfngp/kfngp.github.io/blob/main/examples/closure/closure.go>closure.go:</a></p><div class=highlight><pre tabindex=0 style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#069;font-weight:700>func</span> <span style=color:#c0f>intSeq</span>() <span style=color:#069;font-weight:700>func</span>() <span style=color:#078;font-weight:700>int</span> {
+</span></span><span style=display:flex><span>    i <span style=color:#555>:=</span> <span style=color:#f60>0</span>
+</span></span><span style=display:flex><span>	<span style=color:#09f;font-style:italic>// the returned anonymous function references variable i
+</span></span></span><span style=display:flex><span><span style=color:#09f;font-style:italic></span>    <span style=color:#069;font-weight:700>return</span> <span style=color:#069;font-weight:700>func</span>() <span style=color:#078;font-weight:700>int</span> {
+</span></span><span style=display:flex><span>        i<span style=color:#555>++</span>
+</span></span><span style=display:flex><span>        <span style=color:#069;font-weight:700>return</span> i
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#069;font-weight:700>func</span> <span style=color:#c0f>main</span>() {
+</span></span><span style=display:flex><span>    nextInt <span style=color:#555>:=</span> <span style=color:#c0f>intSeq</span>()
+</span></span><span style=display:flex><span>    fmt.<span style=color:#c0f>Println</span>(<span style=color:#c0f>nextInt</span>())
+</span></span><span style=display:flex><span>    fmt.<span style=color:#c0f>Println</span>(<span style=color:#c0f>nextInt</span>())
+</span></span><span style=display:flex><span>    fmt.<span style=color:#c0f>Println</span>(<span style=color:#c0f>nextInt</span>())	
+</span></span><span style=display:flex><span>	<span style=color:#09f;font-style:italic>// call intSeq() generate a new enviroment, i in newINts set to 0
+</span></span></span><span style=display:flex><span><span style=color:#09f;font-style:italic></span>    newInts <span style=color:#555>:=</span> <span style=color:#c0f>intSeq</span>()
+</span></span><span style=display:flex><span>    fmt.<span style=color:#c0f>Println</span>(<span style=color:#c0f>newInts</span>())
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><code>intSeq</code> 返回的匿名函数引用其包裹函数 <code>intSeq</code> 的变量 <code>i</code>，程序的最终执行结果为：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>1
+</span></span><span style=display:flex><span>2
+</span></span><span style=display:flex><span>3
+</span></span><span style=display:flex><span>1
+</span></span></code></pre></div><p>注意在没有给匿名函数传递参数的情况下，匿名函数却引用到了包裹函数的变量 <code>i</code>，这使其称之为闭包。</p><h3 id=闭包的实现>闭包的实现</h3><p>现在请读者思考一个问题：<code>intSeq()</code> 中的局部变量 <code>i</code> 应该在内存中的什么位置分配？<code>intSeq()</code> 函数的栈上？首先肯定不能在 <code>intSeq</code> 函数的栈上分配，因为函数 <code>intSeq</code> 返回后，对应的函数栈就失效了，此时匿名函数中的变量 <code>i</code> 就引用了一个失效的位置。所以闭包环境中引用的变量不能在栈上分配。实际上 Go 语言会进行逃逸分析，将闭包环境中的变量<strong>分配至堆上</strong>。使用 <code>go build --gcflags=-m examples/closure/closure.go</code> 查看输出，可以看到如下一行输出信息：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>examples/closure/closure.go:6:2: moved to heap: i
+</span></span></code></pre></div><p>使用 <code>go tool compile -N -l -S examples/closure/closure.go</code> 查看汇编代码可以看到更详细的实现：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>...
+</span></span><span style=display:flex><span>MOVD    $type.noalg.struct { F uintptr; &#34;&#34;.i *int }(SB), R0
+</span></span><span style=display:flex><span>MOVD    R0, 8(RSP)
+</span></span><span style=display:flex><span>PCDATA  $1, $1
+</span></span><span style=display:flex><span>CALL    runtime.newobject(SB)
+</span></span><span style=display:flex><span>...
+</span></span></code></pre></div><p>可以看到闭包实际上将其函数和其环境中的变量打包成了一个结构体使用 <code>runtime.newobject</code> 将其分配到了堆内存上。因此我们也可以得出一个结论<strong>只要闭包函数对象存在，其引用（捕获）的那些变量就会存在，就不会被回收。</strong></p><h3 id=闭包的应用>闭包的应用</h3><p>闭包在实际实际开发中有很多用处，这里介绍一下在网络开发中使用闭包的例子。在使用 Go 进行 Web 开发时，可以在实际路由处理函数前后集成中间件进行额外的逻辑处理，比如使用 Gin 框架进行服务器开发时，默认会使用 <a href=https://github.com/gin-gonic/gin/blob/1c2aa59b20c8cff5b3c601708afe22100eac25e6/logger.go#L182>Logger</a> 中间件进行日志处理。其实现为：</p><div class=highlight><pre tabindex=0 style=background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#069;font-weight:700>func</span> <span style=color:#c0f>Logger</span>() HandlerFunc {
+</span></span><span style=display:flex><span>	<span style=color:#069;font-weight:700>return</span> <span style=color:#c0f>LoggerWithConfig</span>(LoggerConfig{})
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#069;font-weight:700>func</span> <span style=color:#c0f>LoggerWithFormatter</span>(f LogFormatter) HandlerFunc {
+</span></span><span style=display:flex><span>	<span style=color:#09f;font-style:italic>// closure function
+</span></span></span><span style=display:flex><span><span style=color:#09f;font-style:italic></span>	<span style=color:#069;font-weight:700>return</span> <span style=color:#c0f>LoggerWithConfig</span>(LoggerConfig{
+</span></span><span style=display:flex><span>		Formatter: f,
+</span></span><span style=display:flex><span>	})
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#069;font-weight:700>type</span> HandlerFunc <span style=color:#069;font-weight:700>func</span>(<span style=color:#555>*</span>Context)
+</span></span></code></pre></div><hr>
+<p><a href=https://www.calhoun.io/5-useful-ways-to-use-closures-in-go/>5 Useful Ways to Use Closures in Go</a></p><p><a href=https://www.calhoun.io/what-is-a-closure/>What is a Closure?</a></p><p><a href=https://tonybai.com/2021/08/09/when-variables-captured-by-closures-are-recycled-in-go/>Go中被闭包捕获的变量何时会被回收</a></p></section><div class=post-tags>
 <nav class="nav tags">
 <ul class=tags>
-<li><a href=/tags/go>go</a></li>
-</ul>
-</nav>
-</div>
-</article>
-</main>
-<footer>
-<div style=display:flex><a class=soc href=https://github.com/kfns0b11 title=GitHub><i data-feather=github></i></a></div>
-<div class=footer-info>
+<li><a href=/tags/go>go</a></li></ul></nav></div></article></main><footer>
+<div style=display:flex><a class=soc href=https://github.com/kfns0b11 title=GitHub><i data-feather=github></i></a></div><div class=footer-info>
 2022 © kfn0b11 | <a href=https://github.com/athul/archie>Archie Theme</a> | Built with <a href=https://gohugo.io>Hugo</a>
-</div>
-</footer>
-<script>feather.replace()</script></div>
-</body>
-</html>
+</div></footer><script>feather.replace()</script></div></body></html>
