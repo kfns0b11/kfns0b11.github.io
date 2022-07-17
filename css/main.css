@@ -224,6 +224,7 @@ ul {
 }
 
 .highlight {
+    line-height: 1.2;
     background: 0 0;
     background-color: #FAFAFA;
 }
@@ -366,12 +367,13 @@ ul {
 }
 
 .post-header .meta .date .day {
-    font-family: "Playfair Display", serif;
-    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
     line-height: 0.45em;
-    font-size: 3em;
+    font-size: 2em;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .post-header .meta .date .rest {
